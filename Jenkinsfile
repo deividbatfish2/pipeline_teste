@@ -11,7 +11,7 @@ pipeline {
         stage('Disparar Smoke Test') {
             steps {
                 echo 'Verificando repositório'
-                sh 'cd /pipeline_rest_assured'
+                sh 'cd pipeline_rest_assured'
 		sh 'mvn clean test'
             }
         }
