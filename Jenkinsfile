@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo 'Verificando repositório'
                 sh 'cd pipeline_rest_assured'
+		sh 'pwd'
 		sh 'mvn clean test'
             }
         }
