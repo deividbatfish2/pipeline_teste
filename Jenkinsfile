@@ -2,14 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Baixar o projeto do repositório') {
             steps {
-                echo 'Building..'
+		echo 'Baixando o projeto do repositório remoto'
+                git 'https://github.com/deividbatfish2/pipeline_teste.git'
             }
         }
-        stage('Test') {
+        stage('Disparar Smoke Test') {
             steps {
-                echo 'Testing..'
+                echo 'Verificando repositório'
+                sh 'pwd'
             }
         }
         stage('Deploy') {
