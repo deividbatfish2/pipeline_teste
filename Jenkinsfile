@@ -4,7 +4,7 @@ node {
 
 	stage 'Disparar Smoke Test'
 			sh 'mvn -f pipeline_rest_assured/pom.xml clean test'
-			step([$class: 'JunitResultArchiver', testResults: 'pipeline_rest_assured/**/target/*.xml'])
+			step([$class: 'JunitResultArchiver', testResults: 'pipeline_rest_assured/**/target/surefire-reports/*.xml'])
 
 	stage 'Deploy'
 		echo 'Deploying....'
