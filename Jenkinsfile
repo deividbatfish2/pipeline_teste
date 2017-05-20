@@ -11,6 +11,7 @@ pipeline {
         stage('Disparar Smoke Test') {
 		steps {
 			echo 'Verificando repositório'
+			sh 'make check || true'
 			sh 'mvn -f pipeline_rest_assured/pom.xml clean test'
 		        echo 'Importando relatório de teste'
 			junit 'pipeline_rest_assured/**/target/*.xml'
