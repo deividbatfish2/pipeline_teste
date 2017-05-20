@@ -1,0 +1,15 @@
+{
+  "name": "teste",
+  "version": "1.0.0",
+  "description": "Arquivo de configuracao package.json. Responsavel por gerir as dependencias do projeto",
+  "main": "protractor.conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine-spec-reporter": "^4.1.0",
+    "protractor-jasmine2-html-reporter": "0.0.7"
+  }
+}
