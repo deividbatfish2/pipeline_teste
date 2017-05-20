@@ -13,7 +13,7 @@ pipeline {
 			echo 'Verificando repositório'
 			sh 'make check || true'
 			sh 'mvn -f pipeline_rest_assured/pom.xml clean test'
-			junit 'pipeline_rest_assured/**/target/*.xml'
+			[$class: 'JunitResultArchiver', testResults: 'pipeline_rest_assured/**/target/*.xml']
 	    	}
         }
         stage('Deploy') {
