@@ -1,21 +1,38 @@
 node {
-	stage 'Baixar o projeto do repositório'
-		git 'https://github.com/deividbatfish2/pipeline_teste.git'
+	agent any
 
-	stage 'Verificar se o site está no ar'	
-		sh 'casperjs test DeployTest/site-no-ar.js --xunit=DeployTest/report/log.xml'
-		step(junit '**/DeployTest/report/*.xml')
-
-	stage 'Disparar Smoke Test'
-		echo 'Smoke Test executado'
-
-	stage 'WebApi Test'
-		sh 'mvn -f pipeline_rest_assured/pom.xml clean test'
-		step(junit '**/pipeline_rest_assured/target/surefire-reports/*.xml')	
-
-	stage 'Executar testes de aceitação'
-		echo 'Deploying....'
-
-	stage 'Executar testes funcionais'
-		echo 'Deploying....'
+	stages {
+		stage('Baixar o projeto do repositório') {
+			steps {
+				git 'https://github.com/deividbatfish2/pipeline_teste.git'
+			}
+		}
+		stage('Verificar se o site está no ar') {
+			steps {
+				sh 'casperjs test DeployTest/site-no-ar.js --xunit=DeployTest/report/log.xml'
+				junit '**/DeployTest/report/*.xml'
+			}
+		}
+		stage('Disparar Smoke Test') {
+			steps {
+				echo 'Smoke Test executado'
+			}
+		}
+		stage('WebApi Test') {
+			steps {
+				sh 'mvn -f pipeline_rest_assured/pom.xml clean test'
+				junit '**/pipeline_rest_assured/target/surefire-reports/*.xml'
+			}	
+		}
+		stage('Executar testes de aceitação') {
+			steps {
+				echo 'Deploying....'
+			}
+		}
+		stage('Executar testes funcionais') {
+			steps {
+				echo 'Deploying....'
+			}
+		}
+	}
 }
