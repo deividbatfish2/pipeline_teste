@@ -13,7 +13,7 @@ node {
 				junit '**/DeployTest/report/*.xml'
 			}
 		}
-		stage('Disparar Smoke Test') {
+		stage('Disparar Suite de Smoke Test') {
 			steps {
 				echo 'Smoke Test executado'
 			}
