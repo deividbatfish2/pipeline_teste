@@ -14,6 +14,6 @@ import br.com.autoglass.pipeline_rest_assured.test.test.controleDeAcesso.ApiDisp
   ApiDispositivoMovel.class
 })
 
-public class SuiteTest {
+public class Suite_ApiSegurancaTest {
 
 }
