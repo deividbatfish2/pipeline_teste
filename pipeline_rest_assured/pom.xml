@@ -61,7 +61,7 @@
 					<version>2.12</version>
 					<configuration>
 						<includes>
-							<include>**/*_ApiPublicaTest</include>
+							<include>**/*_ApiPublicaTest.java</include>
 						</includes>
 					</configuration>
 					<executions>
@@ -84,7 +84,7 @@
 					<version>2.12</version>
 					<configuration>
 						<includes>
-							<include>**/*_ApiSegurancaTest</include>
+							<include>**/*_ApiSegurancaTest.java</include>
 						</includes>
 					</configuration>
 					<executions>

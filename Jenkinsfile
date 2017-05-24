@@ -18,10 +18,10 @@ pipeline {
 				echo 'Smoke Test executado'
 			}
 		}
-		stage('WebApi Test') {
+		stage('WebApi Publica Test') {
 			steps {
-				sh 'mvn -f pipeline_rest_assured/pom.xml clean test'
-				junit '**/pipeline_rest_assured/target/surefire-reports/*.xml'
+				sh 'mvn -f pipeline_rest_assured/pom.xml clean test -P ApiTest-Publica'
+				junit '**/pipeline_rest_assured/target/surefire-reports/*Suite_ApiPublicaTest.xml'
 			}	
 		}
 		stage('Executar testes de aceitação') {
