@@ -1,4 +1,4 @@
-package br.com.autoglass.pipeline_rest_assured.test.test.baseTeste;
+package br.com.autoglass.apiTest.pipeline_rest_assured.test.test.baseTeste;
 
 import java.util.Properties;
 

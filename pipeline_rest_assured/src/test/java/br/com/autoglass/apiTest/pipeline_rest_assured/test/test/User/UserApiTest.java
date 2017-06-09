@@ -1,11 +1,11 @@
-package br.com.autoglass.pipeline_rest_assured.test.test.User;
+package br.com.autoglass.apiTest.pipeline_rest_assured.test.test.User;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
 
-import br.com.autoglass.pipeline_rest_assured.test.test.baseTeste.BaseApiPublica;
+import br.com.autoglass.apiTest.pipeline_rest_assured.test.test.baseTeste.BaseApiPublica;
 
 public class UserApiTest extends BaseApiPublica{
 

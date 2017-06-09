@@ -1,6 +1,6 @@
-package br.com.autoglass.pipeline_rest_assured.test.test.baseTeste;
+package br.com.autoglass.apiTest.pipeline_rest_assured.test.test.baseTeste;
 
-import static br.com.autoglass.pipeline_rest_assured.test.util.Manipulador.getProp;
+import static br.com.autoglass.apiTest.pipeline_rest_assured.test.util.Manipulador.getProp;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 

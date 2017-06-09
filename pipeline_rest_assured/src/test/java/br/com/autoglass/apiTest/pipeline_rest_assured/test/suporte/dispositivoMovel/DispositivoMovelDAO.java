@@ -1,10 +1,10 @@
-package br.com.autoglass.pipeline_rest_assured.test.suporte.dispositivoMovel;
+package br.com.autoglass.apiTest.pipeline_rest_assured.test.suporte.dispositivoMovel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import br.com.autoglass.pipeline_rest_assured.test.util.ConnectionFactory;
+import br.com.autoglass.apiTest.pipeline_rest_assured.test.util.ConnectionFactory;
 
 public class DispositivoMovelDAO {
 

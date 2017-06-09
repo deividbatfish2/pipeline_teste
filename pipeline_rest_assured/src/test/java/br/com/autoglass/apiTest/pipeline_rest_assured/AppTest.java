@@ -1,4 +1,4 @@
-package br.com.autoglass.pipeline_rest_assured;
+package br.com.autoglass.apiTest.pipeline_rest_assured;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -1,4 +1,4 @@
-package br.com.autoglass.pipeline_rest_assured.test.suporte.usuario;
+package br.com.autoglass.apiTest.pipeline_rest_assured.test.suporte.usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.autoglass.pipeline_rest_assured.test.util.ConnectionFactory;
+import br.com.autoglass.apiTest.pipeline_rest_assured.test.util.ConnectionFactory;
 
 public class UsuarioDAO {
 

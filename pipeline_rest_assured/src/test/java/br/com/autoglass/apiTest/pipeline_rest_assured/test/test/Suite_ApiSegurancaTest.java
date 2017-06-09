@@ -1,11 +1,11 @@
-package br.com.autoglass.pipeline_rest_assured.test.test;
+package br.com.autoglass.apiTest.pipeline_rest_assured.test.test;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import br.com.autoglass.pipeline_rest_assured.test.test.controleDeAcesso.APIAutenticacaoAutenticadoUsuario;
-import br.com.autoglass.pipeline_rest_assured.test.test.controleDeAcesso.ApiClientePermissao;
-import br.com.autoglass.pipeline_rest_assured.test.test.controleDeAcesso.ApiDispositivoMovel;
+import br.com.autoglass.apiTest.pipeline_rest_assured.test.test.controleDeAcesso.APIAutenticacaoAutenticadoUsuario;
+import br.com.autoglass.apiTest.pipeline_rest_assured.test.test.controleDeAcesso.ApiClientePermissao;
+import br.com.autoglass.apiTest.pipeline_rest_assured.test.test.controleDeAcesso.ApiDispositivoMovel;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({

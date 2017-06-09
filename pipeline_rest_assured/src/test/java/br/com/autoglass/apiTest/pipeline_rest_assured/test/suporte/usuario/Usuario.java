@@ -1,4 +1,4 @@
-package br.com.autoglass.pipeline_rest_assured.test.suporte.usuario;
+package br.com.autoglass.apiTest.pipeline_rest_assured.test.suporte.usuario;
 
 import java.util.List;
 

@@ -1,12 +1,11 @@
-package br.com.autoglass.pipeline_rest_assured.test.test.controleDeAcesso;
+package br.com.autoglass.apiTest.pipeline_rest_assured.test.test.controleDeAcesso;
 
 import static io.restassured.RestAssured.given;
 
 import org.junit.Test;
 
-import br.com.autoglass.pipeline_rest_assured.test.test.baseTeste.Base;
-import br.com.autoglass.pipeline_rest_assured.test.util.ValidaApi;
-
+import br.com.autoglass.apiTest.pipeline_rest_assured.test.test.baseTeste.Base;
+import br.com.autoglass.apiTest.pipeline_rest_assured.test.util.ValidaApi;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 

@@ -1,4 +1,4 @@
-package br.com.autoglass.pipeline_rest_assured.test.suporte.dispositivoMovel;
+package br.com.autoglass.apiTest.pipeline_rest_assured.test.suporte.dispositivoMovel;
 
 public class DispositivoMovel {
 

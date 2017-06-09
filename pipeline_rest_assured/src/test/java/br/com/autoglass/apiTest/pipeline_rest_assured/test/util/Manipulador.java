@@ -1,4 +1,4 @@
-package br.com.autoglass.pipeline_rest_assured.test.util;
+package br.com.autoglass.apiTest.pipeline_rest_assured.test.util;
 
 import java.io.FileInputStream;
 import java.io.IOException;
