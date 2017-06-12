@@ -16,7 +16,8 @@ public class TestRule {
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/driver/chromedriver");
 		System.setProperty("webdriver.gecko.driver", "src/test/resources/driver/geckodriver");
 		
-		navegador = new ChromeDriver();
+		//navegador = new ChromeDriver();
+		navegador = new FirefoxDriver();
 		
 		navegador.manage().window().maximize();
 		
