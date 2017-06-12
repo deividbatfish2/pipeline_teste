@@ -4,6 +4,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import acceptanceTest.elementMaps.HomePageElementMap;
 import acceptanceTest.testRule.TestRule;
+import util.Manipulador;
 
 public class HomePage extends HomePageElementMap{
 
@@ -13,7 +14,7 @@ public class HomePage extends HomePageElementMap{
 	
 	public void acessarSite() {
 		
-		TestRule.getNavegador().navigate().to("https://www.autoglass.com.br");
+		TestRule.getNavegador().navigate().to(Manipulador.getProp().getProperty("urlBase").toString());
 		
 	}
 

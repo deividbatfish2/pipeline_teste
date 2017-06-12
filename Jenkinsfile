@@ -20,13 +20,14 @@ pipeline {
 		}
 		stage('WebApi Publica Test') {
 			steps {
-				sh 'mvn -f pipeline_rest_assured/pom.xml clean test -P ApiTest-Publica'
-				junit '**/pipeline_rest_assured/target/surefire-reports/*Suite_ApiPublicaTest.xml'
+				sh 'mvn -f suiteTest/pom.xml clean test -P ApiTest'
+				junit '**/suiteTest/target/surefire-reports/*TEST-apiTest.Suite_ApiPublicaTest.xml'
 			}	
 		}
 		stage('Executar testes de aceitação') {
 			steps {
-				echo 'Deploying....'
+				sh 'mvn -f suiteTest/pom.xml clean test -P AcceptanceTest'
+				junit '**/suiteTest/target/surefire-reports/*TEST-acceptanceTest.RunnerTest.xml'
 			}
 		}
 		stage('Executar testes funcionais') {
