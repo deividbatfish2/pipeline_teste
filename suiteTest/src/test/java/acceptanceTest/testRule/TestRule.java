@@ -17,6 +17,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
 import util.Log;
+import util.Manipulador;
 import util.selenium.WebEventListener;
 
 public class TestRule {
@@ -32,27 +33,69 @@ public class TestRule {
 	@Before
 	public void beforeCenario(Scenario cenario) {
 
-		if (extentReporter == null) {
-			extentReporter = new ExtentReports();
-			File reports = new File("target/reports");
-			if(!reports.exists()){
-				reports.mkdirs();
-			}
-			htmlReporter = new ExtentHtmlReporter("target/reports/htmlReports.html");
-			extentReporter.attachReporter(htmlReporter);
-		}
+		inicializaLogFile(cenario);
 
-		feature = extentReporter.createTest(cenario.getId());
+		inicializaNavegador();
 
+	}
+
+	private void inicializaNavegador() {
+
+		// Defini o local dos drivers
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/driver/chromedriver");
 		System.setProperty("webdriver.gecko.driver", "src/test/resources/driver/geckodriver");
 
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("headless");
-		options.addArguments("window-size=1200x600");
-		
-		navegador = new ChromeDriver(options);
-		// navegador = new FirefoxDriver();
+		String navegadorSelecionado = Manipulador.getProp().getProperty("urlBase").toString();
+
+		switch (navegadorSelecionado) {
+		case "Firefox":
+			navegador = new FirefoxDriver();
+			// Initializing EventFiringWebDriver using Firefox WebDriver
+			// instance
+			e_navegador = new EventFiringWebDriver(navegador);
+
+			// Now create object of EventListerHandler to register it with
+			// EventFiringWebDriver
+			eventListener = new WebEventListener();
+
+			e_navegador.register(eventListener);
+
+			e_navegador.manage().window().maximize();
+			break;
+
+		case "Chrome":
+			navegador = new ChromeDriver();
+			// Initializing EventFiringWebDriver using Firefox WebDriver
+			// instance
+			e_navegador = new EventFiringWebDriver(navegador);
+
+			// Now create object of EventListerHandler to register it with
+			// EventFiringWebDriver
+			eventListener = new WebEventListener();
+
+			e_navegador.register(eventListener);
+
+			e_navegador.manage().window().maximize();
+			break;
+		case "Chrome_HeadLess":
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("headless");
+			options.addArguments("window-size=1200x600");
+
+			navegador = new ChromeDriver(options);
+			// Initializing EventFiringWebDriver using Firefox WebDriver
+			// instance
+			e_navegador = new EventFiringWebDriver(navegador);
+
+			// Now create object of EventListerHandler to register it with
+			// EventFiringWebDriver
+			eventListener = new WebEventListener();
+
+			e_navegador.register(eventListener);
+			break;
+		default:
+			break;
+		}
 
 		// Initializing EventFiringWebDriver using Firefox WebDriver instance
 		e_navegador = new EventFiringWebDriver(navegador);
@@ -63,8 +106,21 @@ public class TestRule {
 
 		e_navegador.register(eventListener);
 
-		//e_navegador.manage().window().maximize();
+		// e_navegador.manage().window().maximize();
+	}
 
+	private void inicializaLogFile(Scenario cenario) {
+		if (extentReporter == null) {
+			extentReporter = new ExtentReports();
+			File reports = new File("target/reports");
+			if (!reports.exists()) {
+				reports.mkdirs();
+			}
+			htmlReporter = new ExtentHtmlReporter("target/reports/htmlReports.html");
+			extentReporter.attachReporter(htmlReporter);
+		}
+
+		feature = extentReporter.createTest(cenario.getId());
 	}
 
 	@After
