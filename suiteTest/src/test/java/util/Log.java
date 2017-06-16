@@ -15,6 +15,12 @@ import acceptanceTest.testRule.TestRule;
 
 public class Log {
 
+	public static void logInfo(String strLog) {
+		ExtentTest extendTest = TestRule.getExtendTest();
+
+		extendTest.log(Status.INFO, strLog);
+	}
+
 	public static void logsEPrints(String strLog) {
 		ExtentTest extendTest = TestRule.getExtendTest();
 
