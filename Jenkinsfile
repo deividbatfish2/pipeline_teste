@@ -2,7 +2,7 @@ pipeline {
 	agent any
 
 	parameters {
-		string(defaultValue: 'teste', description: '', name: 'urlBase')
+		string(defaultValue: 'https://www.autoglass.com.br', description: '', name: 'urlBase')
 	}
 
 	stages {
