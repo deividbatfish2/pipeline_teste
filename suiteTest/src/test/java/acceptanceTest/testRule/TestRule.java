@@ -1,5 +1,7 @@
 package acceptanceTest.testRule;
 
+import java.io.File;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -32,7 +34,11 @@ public class TestRule {
 
 		if (extentReporter == null) {
 			extentReporter = new ExtentReports();
-			htmlReporter = new ExtentHtmlReporter("src/test/resources/reports/htmlReports.html");
+			File reports = new File("target/reports");
+			if(!reports.exists()){
+				reports.mkdirs();
+			}
+			htmlReporter = new ExtentHtmlReporter("target/reports/htmlReports.html");
 			extentReporter.attachReporter(htmlReporter);
 		}
 

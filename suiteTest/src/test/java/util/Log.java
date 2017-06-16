@@ -29,7 +29,7 @@ public class Log {
 			extendTest.log(Status.INFO, strLog,
 					MediaEntityBuilder
 							.createScreenCaptureFromPath(
-									System.getProperty("user.dir") + "/src/test/resources/reports/" + strLog + ".png")
+									System.getProperty("user.dir") + "/target/reports/" + strLog + ".png")
 							.build());
 		} catch (IOException e) {
 
@@ -42,7 +42,7 @@ public class Log {
 
 		try {
 			FileUtils.copyFile(strFile,
-					new File(System.getProperty("user.dir") + "/src/test/resources/reports/" + strLog + ".png"));
+					new File(System.getProperty("user.dir") + "/target/reports/" + strLog + ".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -56,7 +56,7 @@ public class Log {
 			extendTest.log(Status.PASS, strLog,
 					MediaEntityBuilder
 							.createScreenCaptureFromPath(
-									System.getProperty("user.dir") + "/src/test/resources/reports/" + strLog + ".png")
+									System.getProperty("user.dir") + "/target/reports/" + strLog + ".png")
 							.build());
 		} catch (IOException e) {
 
@@ -73,7 +73,7 @@ public class Log {
 			extendTest.log(Status.FAIL, strLog,
 					MediaEntityBuilder
 							.createScreenCaptureFromPath(
-									System.getProperty("user.dir") + "/src/test/resources/reports/" + strLog + ".png")
+									System.getProperty("user.dir") + "/target/reports/" + strLog + ".png")
 							.build());
 		} catch (IOException e) {
 
