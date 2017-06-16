@@ -43,15 +43,19 @@ public class TestRule {
 		
 	}
 	
-	public static WebDriver getNavegador(){
-		return navegador;
-	}
-	
 	@After
 	public void afterCenario(Scenario cenario){
 		feature.log(Status.PASS, "Cenário " + cenario.getName() + " executado com sucesso");
 		extentReporter.flush();
 		navegador.quit();
+	}
+	
+	public static WebDriver getNavegador(){
+		return navegador;
+	}
+	
+	public static ExtentTest getExtendTest() {
+		return feature;
 	}
 	
 }

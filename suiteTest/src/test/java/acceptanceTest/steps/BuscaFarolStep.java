@@ -8,6 +8,7 @@ import acceptanceTest.pageObjects.HomePage;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Então;
 import cucumber.api.java.pt.Quando;
+import util.Log;
 
 public class BuscaFarolStep {
 
@@ -16,6 +17,7 @@ public class BuscaFarolStep {
 		HomePage homePage = new HomePage();
 		
 		homePage.acessarSite();
+		Log.logsEPrints("Acessando a HomePage");
 	}
 
 	@Dado("^clique na opção Sou Consumidor$")
@@ -23,6 +25,7 @@ public class BuscaFarolStep {
 	    HomePage homePage = new HomePage();
 	    
 	    homePage.clicarOpcaoSouConsumidor();
+	    Log.logsEPrints("Acessando a pagina do Consumidor");
 	}
 
 	@Quando("^clicar na opção Fárois$")
@@ -30,6 +33,7 @@ public class BuscaFarolStep {
 	    ConsumidorPage consumidorPage = new ConsumidorPage();
 	    
 	    consumidorPage.clicarOpcaoFarois();
+	    Log.logsEPrints("Acessando a pagina sobre Fárois");
 	}
 
 	@Então("^o sie deve exibir inforaçãoes relacionadas a farois$")
