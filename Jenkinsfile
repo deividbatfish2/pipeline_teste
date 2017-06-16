@@ -1,14 +1,11 @@
 pipeline {
 	agent any
 
+	parameters {
+		string(defaultValue: '', description: '', name: 'urlBase')
+	}
+
 	stages {
-		stage('Importando Properties'){
-			properties([
-			  parameters([
-			    string(name: 'DEPLOY_ENV', defaultValue: 'TESTING', description: 'The target environment', )
-			   ])
-			])
-		}
 		stage('Baixar o projeto do repositório') {
 			steps {
 				git 'https://github.com/deividbatfish2/pipeline_teste.git'
@@ -33,7 +30,7 @@ pipeline {
 		}
 		stage('Executar testes de aceitação') {
 			steps {
-				sh 'echo parametro: ${params.urlBase}'
+				echo 'parametro: ${params.urlBase}'
 				sh 'mvn -f suiteTest/pom.xml clean test -P AcceptanceTest'
 				junit '**/suiteTest/target/surefire-reports/*TEST-acceptanceTest.RunnerTest.xml'
 			}
