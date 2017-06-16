@@ -2,6 +2,7 @@ package acceptanceTest.testRule;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
@@ -40,7 +41,11 @@ public class TestRule {
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/driver/chromedriver");
 		System.setProperty("webdriver.gecko.driver", "src/test/resources/driver/geckodriver");
 
-		navegador = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("headless");
+		options.addArguments("window-size=1200x600");
+		
+		navegador = new ChromeDriver(options);
 		// navegador = new FirefoxDriver();
 
 		// Initializing EventFiringWebDriver using Firefox WebDriver instance
@@ -52,7 +57,7 @@ public class TestRule {
 
 		e_navegador.register(eventListener);
 
-		e_navegador.manage().window().maximize();
+		//e_navegador.manage().window().maximize();
 
 	}
 
