@@ -13,6 +13,7 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import util.Log;
 
 public class TestRule {
 
@@ -45,9 +46,19 @@ public class TestRule {
 	
 	@After
 	public void afterCenario(Scenario cenario){
-		feature.log(Status.PASS, "Cenário " + cenario.getName() + " executado com sucesso");
+		if(cenario.isFailed()){
+			Log.logFaill("Cenário " + cenario.getName() + " falhou miseravelmente");
+		}
+		else{
+			Log.logPass("Cenário " + cenario.getName() + " foi executado com sucesso");
+		}
+		
 		extentReporter.flush();
-		navegador.quit();
+		
+		if(navegador != null){
+			navegador.quit();
+		}
+		
 	}
 	
 	public static WebDriver getNavegador(){
