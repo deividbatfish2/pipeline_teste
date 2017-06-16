@@ -104,6 +104,7 @@
 									<path>target/classes/dados.properties</path>
 									<lines>
 										<line>urlBase = ${urlBase}</line>
+										<line>browser = ${browser}</line>
 									</lines>
 								</file>
 							</files>

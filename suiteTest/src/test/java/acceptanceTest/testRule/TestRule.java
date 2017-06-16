@@ -45,7 +45,7 @@ public class TestRule {
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/driver/chromedriver");
 		System.setProperty("webdriver.gecko.driver", "src/test/resources/driver/geckodriver");
 
-		String navegadorSelecionado = Manipulador.getProp().getProperty("urlBase").toString();
+		String navegadorSelecionado = Manipulador.getProp().getProperty("browser").toString();
 
 		switch (navegadorSelecionado) {
 		case "Firefox":
