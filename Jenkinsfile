@@ -30,7 +30,7 @@ pipeline {
 		}
 		stage('Executar testes de aceitação') {
 			steps {
-				sh 'mvn -f suiteTest/pom.xml clean test -P AcceptanceTest -DurlBase=${params.urlBase}'
+				sh "mvn -f suiteTest/pom.xml clean test -P AcceptanceTest -DurlBase=${params.urlBase}"
 				junit '**/suiteTest/target/surefire-reports/*TEST-acceptanceTest.RunnerTest.xml'
 			}
 		}
