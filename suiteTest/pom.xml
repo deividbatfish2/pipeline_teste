@@ -6,7 +6,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<urlBase>https://www.autoglass.com.br</urlBase>
+		<urlBase></urlBase>
 	</properties>
 
 	<dependencies>
