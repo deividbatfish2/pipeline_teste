@@ -3,7 +3,7 @@ pipeline {
 
 	parameters {
 		string(defaultValue: 'https://www.autoglass.com.br', description: '', name: 'urlBase')
-		choice(choices: 'Firefox\Chrome\Chrome_HeadLess', description: 'Selecine o navegador', name: 'navegador')
+		choice(choices: 'Firefox\nChrome\nChrome_HeadLess', description: 'Selecine o navegador', name: 'navegador')
 	}
 
 	stages {
