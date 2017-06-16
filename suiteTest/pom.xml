@@ -6,6 +6,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<urlBase></urlBase>
 		<browser></browser>
 	</properties>
@@ -85,11 +87,11 @@
 		<profile>
 			<id>AcceptanceTest</id>
 			<build>
-			<resources>
-				<resource>
-					<directory>src/test/resources/properties</directory>
-				</resource>
-			</resources>
+				<resources>
+					<resource>
+						<directory>src/test/resources/properties</directory>
+					</resource>
+				</resources>
 				<plugins>
 					<plugin>
 						<groupId>ru.yaal.maven</groupId>
