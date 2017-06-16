@@ -2,7 +2,7 @@ pipeline {
 	agent any
 
 	parameters {
-		string(defaultValue: '', description: '', name: 'urlBase')
+		string(defaultValue: 'teste', description: '', name: 'urlBase')
 	}
 
 	stages {
@@ -30,7 +30,7 @@ pipeline {
 		}
 		stage('Executar testes de aceitação') {
 			steps {
-				echo 'parametro: ${params.urlBase}'
+				echo "flag: ${params.urlBase}"
 				sh 'mvn -f suiteTest/pom.xml clean test -P AcceptanceTest'
 				junit '**/suiteTest/target/surefire-reports/*TEST-acceptanceTest.RunnerTest.xml'
 			}
