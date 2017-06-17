@@ -110,6 +110,18 @@ public class TestRule {
 			e_navegador.register(eventListener);
 			break;
 		default:
+			navegador = new ChromeDriver();
+			// Initializing EventFiringWebDriver using chrome WebDriver
+			// instance
+			e_navegador = new EventFiringWebDriver(navegador);
+
+			// Now create object of EventListerHandler to register it with
+			// EventFiringWebDriver
+			eventListener = new WebEventListener();
+
+			e_navegador.register(eventListener);
+
+			e_navegador.manage().window().maximize();
 			break;
 		}
 
