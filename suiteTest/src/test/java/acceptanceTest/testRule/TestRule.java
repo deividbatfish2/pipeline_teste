@@ -141,7 +141,7 @@ public class TestRule {
 			if (!reports.exists()) {
 				reports.mkdirs();
 			}
-			htmlReporter = new ExtentHtmlReporter("target/reports/htmlReports.html");
+			htmlReporter = new ExtentHtmlReporter("target/reports/htmlReports.htm");
 			extentReporter.attachReporter(htmlReporter);
 		}
 
