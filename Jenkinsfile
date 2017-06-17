@@ -38,7 +38,7 @@ pipeline {
 					 allowMissing: false,
 					 alwaysLinkToLastBuild: false,
 					 keepAll: true,
-					 reportDir: '**/suiteTest/target/reports',
+					 reportDir: 'suiteTest/target/reports',
 					 reportFiles: 'htmlReports.html',
 					 reportName: 'AcceptanceTest Html Report'
 				 ]
