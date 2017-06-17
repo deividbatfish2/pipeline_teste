@@ -25,25 +25,13 @@ public class Log {
 		ExtentTest extendTest = TestRule.getExtendTest();
 
 		try {
+			strLog = strLog.replace(" ", "_");
 			tirarPrintTela(strLog);
-			extendTest.log(Status.INFO, strLog,
-					MediaEntityBuilder
-							.createScreenCaptureFromPath(
-									System.getProperty("user.dir") + "/target/reports/" + strLog + ".png")
-							.build());
+			extendTest.log(Status.INFO, strLog, MediaEntityBuilder
+					.createScreenCaptureFromPath(System.getProperty("user.dir") + "/target/reports/" + strLog + ".png")
+					.build());
 		} catch (IOException e) {
 
-			e.printStackTrace();
-		}
-	}
-
-	private static void tirarPrintTela(String strLog) {
-		File strFile = ((TakesScreenshot) TestRule.getNavegador()).getScreenshotAs(OutputType.FILE);
-
-		try {
-			FileUtils.copyFile(strFile,
-					new File(System.getProperty("user.dir") + "/target/reports/" + strLog + ".png"));
-		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -52,12 +40,11 @@ public class Log {
 		ExtentTest extendTest = TestRule.getExtendTest();
 
 		try {
+			strLog = strLog.replace(" ", "_");
 			tirarPrintTela(strLog);
-			extendTest.log(Status.PASS, strLog,
-					MediaEntityBuilder
-							.createScreenCaptureFromPath(
-									System.getProperty("user.dir") + "/target/reports/" + strLog + ".png")
-							.build());
+			extendTest.log(Status.PASS, strLog, MediaEntityBuilder
+					.createScreenCaptureFromPath(System.getProperty("user.dir") + "/target/reports/" + strLog + ".png")
+					.build());
 		} catch (IOException e) {
 
 			e.printStackTrace();
@@ -69,17 +56,27 @@ public class Log {
 		ExtentTest extendTest = TestRule.getExtendTest();
 
 		try {
+			strLog = strLog.replace(" ", "_");
 			tirarPrintTela(strLog);
-			extendTest.log(Status.FAIL, strLog,
-					MediaEntityBuilder
-							.createScreenCaptureFromPath(
-									System.getProperty("user.dir") + "/target/reports/" + strLog + ".png")
-							.build());
+			extendTest.log(Status.FAIL, strLog, MediaEntityBuilder
+					.createScreenCaptureFromPath(System.getProperty("user.dir") + "/target/reports/" + strLog + ".png")
+					.build());
 		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
 
+	}
+
+	private static void tirarPrintTela(String strLog) {
+		File strFile = ((TakesScreenshot) TestRule.getNavegador()).getScreenshotAs(OutputType.FILE);
+
+		try {
+			FileUtils.copyFile(strFile,
+					new File(System.getProperty("user.dir") + "/target/reports/" + strLog + ".png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
