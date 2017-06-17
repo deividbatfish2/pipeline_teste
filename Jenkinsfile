@@ -3,7 +3,7 @@ pipeline {
 
 	parameters {
 		string(defaultValue: 'https://www.autoglass.com.br', description: '', name: 'urlBase')
-		choice(choices: 'Firefox\nChrome\nChrome_HeadLess', description: 'Selecine o navegador', name: 'navegador')
+		choice(choices: 'Chrome_HeadLess\nChrome\nFirefox\nOpera', description: 'Selecine o navegador:', name: 'navegador')
 	}
 
 	stages {
@@ -27,7 +27,7 @@ pipeline {
 			steps {
 				sh "mvn -f suiteTest/pom.xml clean test -P ApiTest"
 				junit "**/suiteTest/target/surefire-reports/*TEST-apiTest.Suite_ApiPublicaTest.xml"
-			}	
+			}
 		}
 		stage('Executar testes de aceitação') {
 			steps {

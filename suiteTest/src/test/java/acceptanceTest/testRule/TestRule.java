@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -44,6 +45,7 @@ public class TestRule {
 		// Defini o local dos drivers
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/driver/chromedriver");
 		System.setProperty("webdriver.gecko.driver", "src/test/resources/driver/geckodriver");
+		System.setProperty("webdriver.opera.driver", "src/test/resources/driver/operadriver");
 
 		String navegadorSelecionado = Manipulador.getProp().getProperty("browser").toString();
 
@@ -65,7 +67,21 @@ public class TestRule {
 
 		case "Chrome":
 			navegador = new ChromeDriver();
-			// Initializing EventFiringWebDriver using Firefox WebDriver
+			// Initializing EventFiringWebDriver using chrome WebDriver
+			// instance
+			e_navegador = new EventFiringWebDriver(navegador);
+
+			// Now create object of EventListerHandler to register it with
+			// EventFiringWebDriver
+			eventListener = new WebEventListener();
+
+			e_navegador.register(eventListener);
+
+			e_navegador.manage().window().maximize();
+			break;
+		case "Opera":
+			navegador = new OperaDriver();
+			// Initializing EventFiringWebDriver using opera WebDriver
 			// instance
 			e_navegador = new EventFiringWebDriver(navegador);
 
