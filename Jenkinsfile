@@ -33,6 +33,15 @@ pipeline {
 			steps {
 				sh "mvn -f suiteTest/pom.xml clean test -P AcceptanceTest -DurlBase=${params.urlBase} -Dbrowser=${params.navegador}"
 				junit "**/suiteTest/target/surefire-reports/*TEST-acceptanceTest.RunnerTest.xml"
+				// publish html
+			 publishHTML target: [
+					 allowMissing: false,
+					 alwaysLinkToLastBuild: false,
+					 keepAll: true,
+					 reportDir: '**/suiteTest/target/reports',
+					 reportFiles: 'htmlReports.html',
+					 reportName: 'AcceptanceTest Html Report'
+				 ]
 			}
 		}
 		stage('Executar testes funcionais') {

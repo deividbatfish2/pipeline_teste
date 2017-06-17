@@ -12,16 +12,8 @@ import util.Log;
 
 public class BuscaFarolStep {
 
-	@Dado("^acessei o site da Autoglass$")
-	public void acessei_o_site_da_Autoglass() throws Throwable {
-		HomePage homePage = new HomePage();
-
-		homePage.acessarSite();
-		Log.logsEPrints("Acessando a HomePage");
-	}
-
-	@Dado("^clique na opção Sou Consumidor$")
-	public void clique_na_opção_Sou_Consumidor() throws Throwable {
+	@Dado("^que clique na opção Sou Consumidor$")
+	public void que_clique_na_opção_Sou_Consumidor() throws Throwable {
 		HomePage homePage = new HomePage();
 
 		homePage.clicarOpcaoSouConsumidor();
