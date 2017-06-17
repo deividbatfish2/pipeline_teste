@@ -3,7 +3,7 @@ pipeline {
 
 	parameters {
 		string(defaultValue: 'https://www.autoglass.com.br', description: '', name: 'urlBase')
-		choice(choices: 'Chrome_HeadLess\nChrome\nFirefox\nOpera', description: 'Selecine o navegador:', name: 'navegador')
+		choice(choices: 'Chrome\nChrome_HeadLess\nFirefox\nOpera', description: 'Selecine o navegador:', name: 'navegador')
 	}
 
 	stages {
@@ -39,7 +39,7 @@ pipeline {
 					 alwaysLinkToLastBuild: false,
 					 keepAll: true,
 					 reportDir: 'suiteTest/target/reports',
-					 reportFiles: 'htmlReports.html',
+					 reportFiles: 'htmlReports.htm',
 					 reportName: 'AcceptanceTest Html Report'
 				 ]
 			}
