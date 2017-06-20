@@ -11,7 +11,7 @@ public class ContextoStep {
 		HomePage homePage = new HomePage();
 
 		homePage.acessarSite();
-		Log.logsEPrints("Acessando a HomePage");
+		new Log("Acessando a HomePage").tipoInformacao().comPrintScreen();
 	}
 
 }

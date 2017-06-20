@@ -17,7 +17,7 @@ public class ConsultarVagasStep {
 		HomePage homePage = new HomePage();
 
 		homePage.clicarOpcaoTrabalheNaAutoglass();
-		Log.logsEPrints("Acessando a pagina Trabalhe Conosco");
+		new Log("Acessando a pagina Trabalhe Conosco").tipoInformacao().comPrintScreen();
 	}
 
 	@Dado("^clique em oportunidades gerais$")
@@ -25,7 +25,7 @@ public class ConsultarVagasStep {
 		TrabalheNaAutoglassPage trabalheNaAutoglassPage = new TrabalheNaAutoglassPage();
 
 		trabalheNaAutoglassPage.clicarEmOportunidadesGerais();
-		Log.logsEPrints("Acessando a pagina Oportunidades Gerais");
+		new Log("Acessando a pagina Oportunidades Gerais").tipoInformacao().comPrintScreen();
 	}
 
 	@Dado("^clique em vagas disponíveis$")
@@ -33,7 +33,7 @@ public class ConsultarVagasStep {
 		CurriculoConectorPage curriculoConectorPage = new CurriculoConectorPage();
 
 		curriculoConectorPage.clicarEmVagasDisponiveis();
-		Log.logsEPrints("Acessando a pagina Vagas Disponíveis");
+		new Log("Acessando a pagina Vagas Disponíveis").tipoInformacao().comPrintScreen();
 	}
 
 	@Então("^o sistema deve me retonar links com as vagas disponíveis para o candidato$")

@@ -151,9 +151,9 @@ public class TestRule {
 	@After
 	public void afterCenario(Scenario cenario) {
 		if (cenario.isFailed()) {
-			Log.logFaill("Cenário " + cenario.getName() + " falhou miseravelmente");
+			new Log("Cenário " + cenario.getName() + " falhou miseravelmente").tipoErro().comPrintScreen();
 		} else {
-			Log.logPass("Cenário " + cenario.getName() + " foi executado com sucesso");
+			new Log("Cenário " + cenario.getName() + " falhou miseravelmente").tipoCenarioCorreto().comPrintScreen();
 		}
 
 		extentReporter.flush();

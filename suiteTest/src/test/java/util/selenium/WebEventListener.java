@@ -9,12 +9,16 @@ import util.Log;
 public class WebEventListener extends AbstractWebDriverEventListener{
 
 	public void afterChangeValueOf(WebElement arg0, WebDriver arg1, CharSequence[] arg2) {
-		Log.logInfo("Texo " + arg2.toString() + "informado no campo " + arg0.toString());
+		
+		new Log("Texo " + arg2.toString() + "informado no campo " + arg0.toString()).tipoInformacao();
+		
+		//Log.logInfo("Texo " + arg2.toString() + "informado no campo " + arg0.toString());
 		
 	}
 
 	public void afterClickOn(WebElement arg0, WebDriver arg1) {
-		Log.logInfo("Clique no elemento: " + arg0.toString());
+		new Log("Clique no elemento: " + arg0.toString()).tipoInformacao();
+		//Log.logInfo("Clique no elemento: " + arg0.toString());
 	}
 	
 }

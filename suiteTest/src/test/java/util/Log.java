@@ -8,74 +8,61 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 
 import acceptanceTest.testRule.TestRule;
 
 public class Log {
 
-	public static void logInfo(String strLog) {
-		ExtentTest extendTest = TestRule.getExtendTest();
+	private ExtentTest extendTest;
+	private String strLog;
 
-		extendTest.log(Status.INFO, strLog);
+	public Log(String strLog) {
+		this.strLog = strLog;
+		this.extendTest = TestRule.getExtendTest();
 	}
 
-	public static void logsEPrints(String strLog) {
-		ExtentTest extendTest = TestRule.getExtendTest();
+	public Log tipoInformacao() {
 
+		this.extendTest.log(Status.INFO, this.strLog);
+
+		return this;
+	}
+
+	public Log tipoCenarioCorreto() {
+
+		this.extendTest.log(Status.PASS, this.strLog);
+		
+		return this;
+	}
+
+	public Log tipoErro() {
+
+		this.extendTest.log(Status.ERROR, this.strLog);
+
+		return this;
+	}
+
+	public void comPrintScreen() {
+		tirarPrintTela(this.strLog);
 		try {
-			strLog = strLog.replace(" ", "_");
-			tirarPrintTela(strLog);
-			extendTest.log(Status.INFO, strLog, MediaEntityBuilder
-					.createScreenCaptureFromPath(System.getProperty("user.dir") + "/target/reports/" + strLog + ".png")
-					.build());
+			this.extendTest.addScreenCaptureFromPath(tirarPrintTela(this.strLog).getAbsolutePath());
 		} catch (IOException e) {
-
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
-	public static void logPass(String strLog) {
-		ExtentTest extendTest = TestRule.getExtendTest();
-
-		try {
-			strLog = strLog.replace(" ", "_");
-			tirarPrintTela(strLog);
-			extendTest.log(Status.PASS, strLog, MediaEntityBuilder
-					.createScreenCaptureFromPath(System.getProperty("user.dir") + "/target/reports/" + strLog + ".png")
-					.build());
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-
-	}
-
-	public static void logFaill(String strLog) {
-		ExtentTest extendTest = TestRule.getExtendTest();
-
-		try {
-			strLog = strLog.replace(" ", "_");
-			tirarPrintTela(strLog);
-			extendTest.log(Status.FAIL, strLog, MediaEntityBuilder
-					.createScreenCaptureFromPath(System.getProperty("user.dir") + "/target/reports/" + strLog + ".png")
-					.build());
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-
-	}
-
-	private static void tirarPrintTela(String strLog) {
+	
+	private File tirarPrintTela(String strLog) {
 		File strFile = ((TakesScreenshot) TestRule.getNavegador()).getScreenshotAs(OutputType.FILE);
 
 		try {
 			FileUtils.copyFile(strFile,
 					new File(System.getProperty("user.dir") + "/target/reports/" + strLog + ".png"));
+			return new File(System.getProperty("user.dir") + "/target/reports/" + strLog + ".png");
 		} catch (IOException e) {
 			e.printStackTrace();
+			return null;
 		}
 	}
 
