@@ -2,11 +2,6 @@ package acceptanceTest.testRule;
 
 import java.io.File;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,14 +14,15 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import util.Log;
 import util.Manipulador;
-import util.selenium.WebEventListener;
+import util.selenium.webdriver.manager.DriverManager;
+import util.selenium.webdriver.manager.DriverManagerFactory;
+import util.selenium.webdriver.manager.DriverType;
 
 public class TestRule {
 
-	private WebDriver navegador;
+	private DriverManager driverManager;
 	private static WebDriverWait aguarde;
-	private static EventFiringWebDriver e_navegador;
-	private WebEventListener eventListener;
+	private static EventFiringWebDriver navegador;
 
 	private static ExtentHtmlReporter htmlReporter;
 	private static ExtentReports extentReporter;
@@ -43,11 +39,6 @@ public class TestRule {
 
 	private void inicializaNavegador() {
 
-		// Defini o local dos drivers
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/driver/chromedriver");
-		System.setProperty("webdriver.gecko.driver", "src/test/resources/driver/geckodriver");
-		System.setProperty("webdriver.opera.driver", "src/test/resources/driver/operadriver");
-
 		String navegadorSelecionado;
 
 		try {
@@ -58,80 +49,32 @@ public class TestRule {
 
 		switch (navegadorSelecionado) {
 		case "Firefox":
-			navegador = new FirefoxDriver();
-			// Initializing EventFiringWebDriver using Firefox WebDriver
-			// instance
-			e_navegador = new EventFiringWebDriver(navegador);
-
-			// Now create object of EventListerHandler to register it with
-			// EventFiringWebDriver
-			eventListener = new WebEventListener();
-
-			e_navegador.register(eventListener);
-
-			e_navegador.manage().window().maximize();
+			driverManager = DriverManagerFactory.getManager(DriverType.FIREFOX);
+			navegador = driverManager.getNavegador();
+			navegador.manage().window().maximize();
 			break;
 
 		case "Chrome":
-			navegador = new ChromeDriver();
-			// Initializing EventFiringWebDriver using chrome WebDriver
-			// instance
-			e_navegador = new EventFiringWebDriver(navegador);
-
-			// Now create object of EventListerHandler to register it with
-			// EventFiringWebDriver
-			eventListener = new WebEventListener();
-
-			e_navegador.register(eventListener);
-
-			e_navegador.manage().window().maximize();
+			driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
+			navegador = driverManager.getNavegador();
+			navegador.manage().window().maximize();
 			break;
 		case "Opera":
-			navegador = new OperaDriver();
-			// Initializing EventFiringWebDriver using opera WebDriver
-			// instance
-			e_navegador = new EventFiringWebDriver(navegador);
-
-			// Now create object of EventListerHandler to register it with
-			// EventFiringWebDriver
-			eventListener = new WebEventListener();
-
-			e_navegador.register(eventListener);
-
-			e_navegador.manage().window().maximize();
+			driverManager = DriverManagerFactory.getManager(DriverType.OPERA);
+			navegador = driverManager.getNavegador();
+			navegador.manage().window().maximize();
 			break;
 		case "Chrome_HeadLess":
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("headless");
-			options.addArguments("window-size=1200x600");
-
-			navegador = new ChromeDriver(options);
-			// Initializing EventFiringWebDriver using Firefox WebDriver
-			// instance
-			e_navegador = new EventFiringWebDriver(navegador);
-
-			// Now create object of EventListerHandler to register it with
-			// EventFiringWebDriver
-			eventListener = new WebEventListener();
-
-			e_navegador.register(eventListener);
+			driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
+			navegador = driverManager.getNavegador();
 			break;
 		default:
-			navegador = new ChromeDriver();
-			// Initializing EventFiringWebDriver using chrome WebDriver
-			// instance
-			e_navegador = new EventFiringWebDriver(navegador);
-
-			// Now create object of EventListerHandler to register it with
-			// EventFiringWebDriver
-			eventListener = new WebEventListener();
-
-			e_navegador.register(eventListener);
-
-			e_navegador.manage().window().maximize();
+			driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
+			navegador = driverManager.getNavegador();
+			navegador.manage().window().maximize();
 			break;
 		}
-		aguarde = new WebDriverWait(e_navegador, 10);
+		aguarde = new WebDriverWait(navegador, 10);
 	}
 
 	private void inicializaLogFile(Scenario cenario) {
@@ -169,7 +112,7 @@ public class TestRule {
 	}
 
 	public static EventFiringWebDriver getNavegador() {
-		return e_navegador;
+		return navegador;
 	}
 
 	public static ExtentTest getExtendTest() {
