@@ -17,7 +17,7 @@ public class BuscaFarolStep {
 		HomePage homePage = new HomePage();
 
 		homePage.clicarOpcaoSouConsumidor();
-		Log.logsEPrints("Acessando a pagina do Consumidor");
+		new Log("Acessando a pagina do Consumidor").tipoInformacao().comPrintScreen();
 	}
 
 	@Quando("^clicar na opção Fárois$")
@@ -25,7 +25,8 @@ public class BuscaFarolStep {
 		ConsumidorPage consumidorPage = new ConsumidorPage();
 
 		consumidorPage.clicarOpcaoFarois();
-		Log.logsEPrints("Acessando a pagina sobre Fárois");
+		new Log("Acessando a pagina sobre Fárois").tipoInformacao().comPrintScreen();
+			
 	}
 
 	@Então("^o sie deve exibir inforaçãoes relacionadas a farois$")
