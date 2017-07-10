@@ -1,19 +1,15 @@
 package acceptanceTest.testRule;
 
-import java.io.File;
-
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import util.Log;
 import util.Manipulador;
+import util.log.LogManagerFactory;
+import util.log.LogType;
+import util.log.interfaces.ILogBdd;
 import util.selenium.webdriver.manager.DriverManager;
 import util.selenium.webdriver.manager.DriverManagerFactory;
 import util.selenium.webdriver.manager.DriverType;
@@ -24,9 +20,7 @@ public class TestRule {
 	private static WebDriverWait aguarde;
 	private static EventFiringWebDriver navegador;
 
-	private static ExtentHtmlReporter htmlReporter;
-	private static ExtentReports extentReporter;
-	private static ExtentTest feature;
+	private static ILogBdd log = null;
 
 	@Before
 	public void beforeCenario(Scenario cenario) {
@@ -78,28 +72,22 @@ public class TestRule {
 	}
 
 	private void inicializaLogFile(Scenario cenario) {
-		if (extentReporter == null) {
-			extentReporter = new ExtentReports();
-			File reports = new File("target/reports");
-			if (!reports.exists()) {
-				reports.mkdirs();
-			}
-			htmlReporter = new ExtentHtmlReporter("target/reports/htmlReports.htm");
-			extentReporter.attachReporter(htmlReporter);
+		if (log == null) {
+			log = LogManagerFactory.getLog(LogType.BDD);
 		}
-
-		feature = extentReporter.createTest(cenario.getId());
+		log.createLog(cenario);
 	}
 
 	@After
 	public void afterCenario(Scenario cenario) {
+
 		if (cenario.isFailed()) {
-			new Log("Cenário " + cenario.getName() + " falhou miseravelmente").tipoErro().comPrintScreen();
+			log.addMensageFailPrint("Cenário " + cenario.getName() + " falhou miseravelmente");
 		} else {
-			new Log("Cenário " + cenario.getName() + " falhou miseravelmente").tipoCenarioCorreto().comPrintScreen();
+			log.addMensageSuccessPrint("Cenário " + cenario.getName() + " falhou miseravelmente");
 		}
 
-		extentReporter.flush();
+		log.finishLog();
 
 		if (navegador != null) {
 			navegador.quit();
@@ -115,8 +103,8 @@ public class TestRule {
 		return navegador;
 	}
 
-	public static ExtentTest getExtendTest() {
-		return feature;
+	public static ILogBdd getLogAtivo() {
+		return log;
 	}
 
 }

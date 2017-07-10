@@ -5,10 +5,10 @@ import static org.junit.Assert.assertTrue;
 import acceptanceTest.pageObjects.ConsumidorPage;
 import acceptanceTest.pageObjects.FaroisPage;
 import acceptanceTest.pageObjects.HomePage;
+import acceptanceTest.testRule.TestRule;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Então;
 import cucumber.api.java.pt.Quando;
-import util.Log;
 
 public class BuscaFarolStep {
 
@@ -17,7 +17,8 @@ public class BuscaFarolStep {
 		HomePage homePage = new HomePage();
 
 		homePage.clicarOpcaoSouConsumidor();
-		new Log("Acessando a pagina do Consumidor").tipoInformacao().comPrintScreen();
+
+		TestRule.getLogAtivo().addMensageInfoPrint("Acessando a pagina do Consumidor");
 	}
 
 	@Quando("^clicar na opção Fárois$")
@@ -25,8 +26,8 @@ public class BuscaFarolStep {
 		ConsumidorPage consumidorPage = new ConsumidorPage();
 
 		consumidorPage.clicarOpcaoFarois();
-		new Log("Acessando a pagina sobre Fárois").tipoInformacao().comPrintScreen();
-			
+		TestRule.getLogAtivo().addMensageInfoPrint("Acessando a pagina sobre Fárois");
+
 	}
 
 	@Então("^o sie deve exibir inforaçãoes relacionadas a farois$")

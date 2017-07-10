@@ -1,8 +1,8 @@
 package acceptanceTest.steps;
 
 import acceptanceTest.pageObjects.HomePage;
+import acceptanceTest.testRule.TestRule;
 import cucumber.api.java.pt.Dado;
-import util.Log;
 
 public class ContextoStep {
 
@@ -11,7 +11,7 @@ public class ContextoStep {
 		HomePage homePage = new HomePage();
 
 		homePage.acessarSite();
-		new Log("Acessando a HomePage").tipoInformacao().comPrintScreen();
+		TestRule.getLogAtivo().addMensageInfoPrint("Acessando a HomePage");
 	}
 
 }

@@ -24,7 +24,7 @@ public class ChromeDriverManager extends DriverManager {
 
 		// Initializing EventFiringWebDriver using Chrome WebDriver
 		// instance
-		navegador = new EventFiringWebDriver(navegador);
+		navegador = new EventFiringWebDriver(driver);
 
 		// Now create object of EventListerHandler to register it with
 		// EventFiringWebDriver

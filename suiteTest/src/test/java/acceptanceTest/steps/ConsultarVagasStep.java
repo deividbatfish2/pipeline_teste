@@ -6,9 +6,10 @@ import acceptanceTest.pageObjects.CurriculoConectorPage;
 import acceptanceTest.pageObjects.HomePage;
 import acceptanceTest.pageObjects.TrabalheNaAutoglassPage;
 import acceptanceTest.pageObjects.VagasDisponiveisPage;
+import acceptanceTest.testRule.TestRule;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Então;
-import util.Log;
+import util.log.LogExtent;
 
 public class ConsultarVagasStep {
 
@@ -17,7 +18,7 @@ public class ConsultarVagasStep {
 		HomePage homePage = new HomePage();
 
 		homePage.clicarOpcaoTrabalheNaAutoglass();
-		new Log("Acessando a pagina Trabalhe Conosco").tipoInformacao().comPrintScreen();
+		TestRule.getLogAtivo().addMensageInfoPrint("Acessando a pagina Trabalhe Conosco");
 	}
 
 	@Dado("^clique em oportunidades gerais$")
@@ -25,7 +26,7 @@ public class ConsultarVagasStep {
 		TrabalheNaAutoglassPage trabalheNaAutoglassPage = new TrabalheNaAutoglassPage();
 
 		trabalheNaAutoglassPage.clicarEmOportunidadesGerais();
-		new Log("Acessando a pagina Oportunidades Gerais").tipoInformacao().comPrintScreen();
+		TestRule.getLogAtivo().addMensageInfoPrint("Acessando a pagina Oportunidades Gerais");
 	}
 
 	@Dado("^clique em vagas disponíveis$")
@@ -33,7 +34,7 @@ public class ConsultarVagasStep {
 		CurriculoConectorPage curriculoConectorPage = new CurriculoConectorPage();
 
 		curriculoConectorPage.clicarEmVagasDisponiveis();
-		new Log("Acessando a pagina Vagas Disponíveis").tipoInformacao().comPrintScreen();
+		TestRule.getLogAtivo().addMensageInfoPrint("Acessando a pagina Vagas Disponíveis");
 	}
 
 	@Então("^o sistema deve me retonar links com as vagas disponíveis para o candidato$")
